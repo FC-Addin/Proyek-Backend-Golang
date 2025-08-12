@@ -19,3 +19,38 @@ Fitur ini memungkinkan pengguna untuk berinteraksi dalam forum, seperti membuat 
 * **Like/Unlike**: Endpoint untuk memberikan atau menghapus 'like' pada postingan atau komentar.
 * **Get All Post**: Endpoint untuk mengambil semua postingan yang ada.
 * **Get Post by ID**: Endpoint untuk mengambil detail sebuah postingan berdasarkan ID-nya.
+
+### Entity Relationship Diagram (ERD)
+
+| Nama Tabel | Kolom | Tipe Data | Keterangan |
+| :--- | :--- | :--- | :--- |
+| **Users** | `id` | `INT` | Primary Key, Not Null |
+| | `email` | `VARCHAR(100)` | Not Null |
+| | `password` | `VARCHAR(500)` | Not Null |
+| | `created_at` | `TIMESTAMP` | Not Null |
+| | `updated_at` | `TIMESTAMP` | Not Null |
+| | `created_by` | `LONGTEXT` | Not Null |
+| | `updated_by` | `LONGTEXT` | Not Null |
+| **Posts** | `id` | `INT` | Primary Key, Not Null |
+| | `user_id` | `INT` | Foreign Key (FK1) |
+| | `post_title` | `VARCHAR(500)` | Not Null |
+| | `post_content` | `LONGTEXT` | Not Null |
+| | `hashtag` | `LONGTEXT` | Not Null |
+| | `created_at` | `TIMESTAMP` | Not Null |
+| | `updated_at` | `TIMESTAMP` | Not Null |
+| | `created_by` | `LONGTEXT` | Not Null |
+| | `updated_by` | `LONGTEXT` | Not Null |
+| **Comments** | `id` | `INT` | Primary Key, Not Null |
+| | `post_id` | `INT` | Foreign Key (FK1) |
+| | `comments` | `LONGTEXT` | Not Null |
+| | `created_at` | `TIMESTAMP` | Not Null |
+| | `updated_at` | `TIMESTAMP` | Not Null |
+| | `created_by` | `LONGTEXT` | Not Null |
+| | `updated_by` | `LONGTEXT` | Not Null |
+| **User Activities** | `id` | `INT` | Primary Key, Not Null |
+| | `post_id` | `INT` | Foreign Key (FK1) |
+| | `is_liked` | `BOOLEAN` | Not Null |
+| | `created_at` | `TIMESTAMP` | Not Null |
+| | `updated_at` | `TIMESTAMP` | Not Null |
+| | `created_by` | `LONGTEXT` | Not Null |
+| | `updated_by` | `LONGTEXT` | Not Null |
